@@ -1,0 +1,45 @@
+Pattern matching consiste na pesquisa por padrões em determinados dados e, caso tenha sucesso, fazer algo com ele.
+Ao definir funções, você pode definir códigos específicos para cada padrão. Isso gera um código mais conciso, simples e legível. 
+Os padrões serão testados de cima para baixo e, de acordo com o resultado, executado ou não seu corpo. 
+
+sayMe :: (Integral a) => a -> String  
+sayMe 1 = "Um!"  
+sayMe 2 = "Dois!"  
+sayMe 3 = "Três!"  
+sayMe 4 = "Quatro!"  
+sayMe 5 = "Cinco!"  
+sayMe x = "Não está entre 1 e 5"
+
+Caso não haja um termo genérico (no caso acima o 'x') o pattern matching pode falhar, como em:
+
+charName :: Char -> String  
+charName 'a' = "Albert"  
+charName 'b' = "Broseph"  
+charName 'c' = "Cecil"  
+
+charName 'b' retorna "Broseph"  
+charName 'h' retorna erro, ja que não há um termo especifico para 'h' nem uma pattern genérica
+
+Listas podem ser usadas em pattern matching. Sabendo que [1,2,3] é apenas um açucar sintático para 1:2:3:[], você também pode utilizar o padrão original. 
+
+Ex: x:xs   joga em x o 1o elemento de uma lista e joga em xs o resto da lista
+Ex: x:_    joga em x o 1o elemento de uma lista qualquer
+Ex: x:[]   joga em x o 1o elemento de uma lista com 1 elemento
+Ex: x:y:[] joga em x o 1o elemento e em y o 2o elemento de uma lista de 2 elementos
+Ex: x:y:_  joga em x o 1o elemento e em y o 2o elemento de uma lista com 2 ou mais elementos
+
+Nota: O padrão x:xs é muito usado, principalmente em funções recursivas. O (possível) problema é de : funcionar apenas com lista de length 1 ou maior.
+
+Exemplo de uso do padrão:
+
+head' :: [a] -> a  
+head' [] = error "Proibido chamar head em uma lista vazia, amador!"  
+head' (x:_) = x 
+
+length' :: (Num b) => [a] -> b  
+length' [] = 0  
+length' (_:xs) = 1 + length' xs
+
+sum' :: (Num a) => [a] -> a  
+sum' [] = 0  
+sum' (x:xs) = x + sum' xs 

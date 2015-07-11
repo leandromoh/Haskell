@@ -1,0 +1,23 @@
+Guards (guardas) são uma forma de testar se uma (ou mais) propriedades são verdadeiras ou falsas. Se isso te parece demais com um if, está no caminho certo. A diferença é que guards são mais fáceis de ler quando têm muitas condições e funcionam bem com patterns.
+
+Guards são marcados por pipes, seguidos do nome de uma função e seus parâmetros. Geralmente, são identados um pouco a direita. Um guarda geralmente é uma expressão booleana. 
+
+Exemplo 1: Uma funcao que recebe 2 float's, calcula o IMC do usuario e retorna uma mensagem dependendo do numero
+
+bmiTell :: (RealFloat a) => a -> a -> String  
+bmiTell weight height  
+    | weight / height ^ 2 <= 18.5 = "Você esta abaixo do peso!"  
+    | weight / height ^ 2 <= 25.0 = "Supostamente você esta normal. Pfff, aposto que você é feio!"  
+    | weight / height ^ 2 <= 30.0 = "Você esta gordo! Faça uma dieta, gorducho!"  
+    | otherwise                 = "Você é uma baleia, meus parabéns!"  
+
+Em vários casos, o último guard é otherwise, que é definido com True, e por tanto, aprova tudo.
+Exemplo 2: Nossa propria implementação de compare.
+
+myCompare :: (Ord a) => a -> a -> Ordering  
+a `myCompare` b  
+    | a > b     = GT  
+    | a == b    = EQ  
+    | otherwise = LT 
+
+Nota: Do mesmo modo que podemos chamar funções infixas usando crases em volta do seu nome, podemos defini-las. Às vezes se torna mais fácil de se ler.

@@ -1,0 +1,24 @@
+https://tryhaskell.org/
+http://www.tutorialspoint.com/compile_haskell_online.php
+
+import System.Environment
+
+doubleMe x = x + x 
+
+fat 0 = 1
+fat n = n * fat (n - 1)
+
+fib 0 = 0
+fib 1 = 1
+fib n = fib (n - 2) + fib (n - 1)
+
+fstTripla (x, _, _) = x
+
+length2 [] = 0
+length2 (_:xs) = 1 + length2 xs
+
+imcs px ax = [ c |  c <- zipWith (imc) px ax]
+
+imc p a = p / a ^ 2
+
+main = print (imcs [85,54,90,22] [1.90,1.73,1.99,1.5])

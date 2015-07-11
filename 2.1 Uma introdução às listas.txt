@@ -1,0 +1,50 @@
+
+             Uma introdução às listas
+
+operador ++
+adiciona a lista a direita do operador no final da lista a esquerda do operador
+exemplo: "hello" ++ " " ++ "world"  
+
+operador :
+adiciona a lista a esqueda do operador no comeco da lista a direita do operador
+exemplo: "hello" : " " : "world"  
+
+obter um elemento de uma lista pelo indice, usando !!
+"Steve Buscemi" !! 6 retorna 'B'
+
+obter primeiro elemento de uma lista
+head [5,4,3,2,1] retorna 5 
+
+obter uma lista menos o primeiro elemento 
+tail [5,4,3,2,1] retorna [4,3,2,1] 
+
+obter ultimo elemento de uma lista
+last [5,4,3,2,1] retorna 1 
+
+obter uma lista menos o ultimo elemento 
+init [5,4,3,2,1] retorna [5,4,3,2]
+
+obter tamanho de uma lista
+length [5,4,3,2,1] retorna 5
+
+inverter uma lista
+reverse [5,4,3,2,1] retorna [1,2,3,4,5] 
+
+obter os n primeiros elementos de uma lista
+take 3 [5,4,3,2,1] retorna [5,4,3]
+
+remove os n primeiros elementos de uma lista
+drop 3 [8,4,2,1,5,6] retorna [1,5,6]
+
+maximum recebe uma lista de coisas que podem ser colocadas em algum tipo de ordem e retorna o seu maior elemento.
+
+minimum recebe uma lista de coisas que podem ser colocadas em algum tipo de ordem e retorna o seu menor elemento.
+
+sum recebe uma lista de números e retorna a sua soma
+
+product recebe uma lista de números e retorna o seu produto (multiplicacao).
+
+elem recebe alguma coisa e uma lista de coisas e nos diz se esta coisa é um elemento da lista. Geralmente é chamado como uma função infixa porque é mais fácil de ler dessa maneira.
+4 'elem' [3,4,5,6] retorna True
+
+

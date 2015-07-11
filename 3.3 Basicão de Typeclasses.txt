@@ -1,0 +1,40 @@
+Uma Typeclass (classe de tipos) é como uma interface que define um comportamento. Se um tipo é parte de uma typeclass, quer dizer que ela suporta e implementa o comportamento especificado pela classe de tipo. Muita gente vinda da orientação a objetos se confunde e acha estar diante de uma classe de OO. Bom... não. Você pode pensar que são como as interfaces de Java, mas na verdade são muito melhor.
+
+Qual deve ser o tipo da função == ?
+
+ghci> :t (==)  
+(==) :: (Eq a) => a -> a -> Bool 
+
+Tudo antes do símbolo => é denominado class constraint (restrição de classe). Podemos ler a declaração de tipo anterior assim: a função de igualdade recebe dois argumentos de mesmo tipo e retorna um Bool. Esse tipo deve ser membro da classe Eq (que é a class constraint).
+
+A typeclass Eq provê uma interface para o teste de igualdade. Qualquer tipo que faça sentido ser verificado por igualdade com outro tipo deve estar na typeclass Eq. Todos os tipos Haskell - exceto os de IO (tipo para lidar com entrada e saída) e funções - fazem parte da typeclass Eq.
+
+Algumas classes de tipo básicas:
+
+Eq é usado por tipos que suportam teste por igualdade. Funções que usam o operador == ou /= em algum lugar de sua definição.
+
+Ord é para tipos que têm ordem. Funções que usam >, <, >= e <=
+
+Ordering é uma typeclass que pode ser GT, LT ou EQ, significando maior que, menor que e igual a, respectivamente.
+
+Show é para tipos que podem ser representados como strings. A função que lida com a typeclass Show mais usada é a show, que recebe um valor de um que tipo presente em Show e nos mostra esse valor como uma string.
+
+Read é tipo uma oposição da typeclass Show. A função read recebe uma string e retorna um tipo membro de Read.
+Ex: read "5" - 2 retorna 3. Contudo read "4" retorna erro, pois como o GHCI não faz nada com o valor ele não consegue inferir o tipo esperado de read, ele só sabe que deve ser algum tipo da classe Read.
+
+É por isso que podemos especificar explicitamente type annotations (anotações de tipos). 
+Anotações de tipos servem para dizer qual tipo que você quer que uma expressão assuma. Fazemos isso adicionando :: no fim da expressão com o tipo desejado. Ex: read "5" :: Float retorna 5.0  
+
+Enum são tipos que possuem uma sequência. A maior vantagem da typeclass Enum é poder ser usada em ranges de listas. Seus tipos têm sucessores e predecessores definidos, que podem ser conseguidos pelas funções succ e pred. Fazem parte dessa classe os tipos: (), Bool, Char, Ordering, Int, Integer, Float e Double.
+
+Bounded são os tipos que possuem limites (máximo e mínimo). Bool, Int, Char, Tuplas não-vazias, etc.
+Ex: minBound :: Int retorna -2147483648  
+Ex: maxBound :: (Bool, Int, Char) retorna (True,2147483647,'\1114111')
+
+Num é uma typeclass numérica. Seus membros têm a função de agir como números. Para estar em Num, o tipo já deve estar em Show e Eq.
+
+Integral também é uma typeclass numérica. Enquanto Num inclui todos os números (reais e inteiros), Integral apenas inteiros. Essa typeclass é composta por Int e Integer.
+
+Floating inclui apenas números de ponto flutuante, então são Float e Double.
+
+Uma função muito útil para lidar com números é fromIntegral. A declaração do seu tipo é fromIntegral :: (Num b, Integral a) => a -> b. Assim, vemos que ela recebe um número inteiro e transforma-o em algo mais genérico. Isso é útil quando você precisa que tipos inteiros e ponto flutuante trabalhem juntos. Por exemplo, a função length tem uma declaração de length :: [a] -> Int ao invés de ter algo mais geral como (Num b) => length :: [a] -> b. Acho que está assim por razões históricas, o que, na minha opinião, é besteira. Ainda assim, se tentarmos somar o tamanho de uma lista (length) com 3.2 teremos um erro, pois não é possível somar um Int com um número de ponto flutuante. Então para contornar, fromIntegral (length [1,2,3,4]) + 3.2 funciona perfeitamente.

@@ -1,0 +1,21 @@
+Ao contrário de uma lista, uma tupla pode conter uma combinação de vários tipos. Ex: ("Wow", False, 1)
+O tipo de uma tupla é baseado no seu numero de elementos e nos seus respctivos tipos.
+
+ex: (1,"a") é do tipo (Int, Char)
+ex: (1,2,3) é do tipo (Int, Int, Int)
+ex: (123,"Hello",false) é do tipo (Int, [Char], Bool)
+
+fst recebe um par e retorna seu primeiro componente.
+ghci> fst ("Wow", False)  
+"Wow"
+
+snd recebe um par e retorna seu segundo componente.
+ghci> snd ("Wow", False)  
+False 
+
+zip recebe duas listas e então as comprime em uma única lista juntando-os elementos tuplas
+zip [1 ..8] ["um", "dois", "tres", "quatro", "cinco"]
+[(1,"um"),(2,"dois"),(3,"tres"),(4,"quatro"),(5,"cinco")]
+
+Que triângulo retângulo que tem números inteiros para todos os lados e todos os lados iguais ou menores que 10 e tem um perímetro de 24?
+[ (a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b], a^2 + b^2 == c^2, a+b+c == 24]

@@ -1,0 +1,14 @@
+ghci> take 3 [0,1..] //pego os 3 primeiros elementos do conjunto (infinito) dos naturais
+[0,1,2]
+
+ghci> take 24 [13,26..]  //pego os primeiros 24 multiplos de 13
+[13,26,39,52,65,78,91,104,117,130,143,156,169,182,195,208,221,234,247,260,273,286,299,312] 
+
+ghci> take 12 (cycle "LOL ")  //cycle recebe uma lista e gera ciclos infinitos dela
+"LOL LOL LOL "
+
+ghci> take 10 (repeat 5)  //repeat recebe um elemento e produz uma lista infinita dele. 
+[5,5,5,5,5,5,5,5,5,5] 
+
+ghci> replicate 3 10 // parecido com o repeat, so que a lista gerada nao eh infinita
+[10,10,10]

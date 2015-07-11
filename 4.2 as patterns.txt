@@ -1,0 +1,13 @@
+É usado quando precisamos usar um pattern e continuar com a lista inteira acessível.
+Normalmente usamos esse recurso para evitar repetição de grandes patterns usadas durante a declaração de uma função.
+Para cria-lo, basta colocar um @ na frente do nome do pattern.
+
+Ex: o pattern xs@(x:y:ys) irá fazer exatamente a mesma coisa que x:y:ys, mas você consegue obter a lista inteira usando apenas xs, ao invés repetir tudo novamente digitando x:y:ys no corpo da função novamente.
+
+Um exemplo bem simples:
+
+capital :: String -> String  
+capital "" = "String vazia, oops!"  
+capital all@(x:xs) = "A primeira letra de " ++ all ++ " é " ++ [x] 
+
+capital "Dracula" retorna "A primeira letra de Dracula é D"

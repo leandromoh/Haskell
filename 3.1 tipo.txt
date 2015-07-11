@@ -1,0 +1,26 @@
+Um "tipo" é algo como uma etiqueta que toda expressão têm, que nos diz em qual categoria ela se encaixa. A expressão True é booleana, "hello" é uma string (lista de caracteres), etc.
+
+Agora usaremos o GHCI para descobrir os tipos de algumas expressões. Faremos isso usando o comando :t que, seguido de qualquer expressão válida, retorna o seu tipo. Vamos dar uma olhada.
+
+ghci> :t 'a'  
+'a' :: Char  
+ghci> :t True  
+True :: Bool  
+ghci> :t "HELLO!"  
+"HELLO!" :: [Char]  
+ghci> :t (True, 'a')  
+(True, 'a') :: (Bool, Char)  
+ghci> :t 4 == 5  
+4 == 5 :: Bool  
+
+Funções também têm tipos. Quando escrevemos nossas próprias funções, podemos declarar explicitamente quais são os seus tipos. Isso geralmente é considerado uma boa prática exceto quando a função é muito curta. 
+
+removeNonUppercase :: [Char] -> [Char]  
+removeNonUppercase st = [ c | c <- st, c `elem` ['A'..'Z']]
+
+factorial :: Integer -> Integer  
+factorial n = product [1..n]
+
+Os parâmetros são separados por -> e não há nenhuma distinção entre tipos de parâmetros e retorno. O tipo do retorno é o último e os outros tipos que vem antes são os parâmetros da funcao.
+
+Se você deseja especificar o tipo da função, mas não tem certeza de qual deve ser, você pode escrevê-la normalmente e depois descobrir com o :t. Funções também são expressões, então :t funciona sem problemas.

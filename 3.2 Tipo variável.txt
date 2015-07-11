@@ -1,0 +1,9 @@
+Tipos com letra minuscula são tipos variaveis. Isso significa que o tipo pode ser qualquer tipo. 
+Isso é algo como os genéricos de outras linguagens, e nos permite facilmente escrever funções mais genéricas caso o processamento seja o mesmo para diferentes tipos.
+
+ghci> :t head  
+head :: [a] -> a
+
+A declaração de tipo em head diz que ele recebe uma lista de elementos de qualquer tipo e retorna um elemento do mesmo tipo, no caso, o primeiro elemento da lista.
+
+Embora tipos variáveis possam ter nomes com mais de um caractere, normalmente nós damos a eles nomes como a, b, c, d..
