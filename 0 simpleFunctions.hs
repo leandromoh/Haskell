@@ -58,3 +58,17 @@ remove' e (x:xs) = if e == x then xs else x : remove' e xs
 selectionSort [] = []
 selectionSort xs = min : selectionSort (remove' min xs)
                    where min = minList xs                
+
+reverse1 [] ys = ys
+reverse1 (x:xs) ys = reverse1 xs (x:ys)
+
+reverse' xs = reverse1 xs []
+
+dropWhile' f [] = []
+dropWhile' f (x:xs) = if f x then dropWhile' f xs else xs
+
+takeWhile' f [] = []
+takeWhile' f (x:xs) = if f x then x : takeWhile' f xs else []
+
+split c [] = []
+split c xs = (takeWhile' (/= c) xs) : split c (dropWhile' (/= c) xs)
