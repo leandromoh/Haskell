@@ -1,1 +1,1 @@
-http://haskell.tailorfontela.com.br/chapters
+http://haskell.tailorfontela.com.br/chapters - Learn You a Haskell for Great Good!
