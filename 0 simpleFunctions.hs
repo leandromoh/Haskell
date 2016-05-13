@@ -52,6 +52,11 @@ minList xs = muxList (<) xs
 
 maxList xs = muxList (>) xs
 
+maxList' [x] = x
+maxList' (x1:x2:xs)
+  | x1 > x2 = maxList' (x1:xs)
+  | otherwise = maxList' (x2:xs)
+
 remove' e [] = []
 remove' e (x:xs) = if e == x then xs else x : remove' e xs
 
