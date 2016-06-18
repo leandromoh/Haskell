@@ -1,7 +1,7 @@
 indexOf str sub startPosition
   | startPosition > len1 = -1
   | len1 < len2 = -1
-  | otherwise = goThroughString str sub 0 (len1 - len2)
+  | otherwise = goThroughString str sub startPosition (len1 - len2)
   where
     len1 = length str
     len2 = length sub
