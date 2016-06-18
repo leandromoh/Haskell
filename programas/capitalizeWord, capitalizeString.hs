@@ -23,6 +23,6 @@ capitalizeWord str@(x:xs)
   | length str > 3 = toUpper x : map toLower xs
   | otherwise = map toLower str
 
-capitalizeWordsInString xs = (join " " (map capitalizeWord (split ' ' xs)))
+capitalizeString xs = (join " " (map capitalizeWord (split ' ' xs)))
 
-main = print $ map capitalizeWordsInString ["ALGORÍTIMOS E LÓGICA DE PROGRAMAÇÃO", "LINGUAGEM DE PROGRAMAÇÃO", "LINGUAGEM DE PROGRAMAÇÃO IV", "LABORATÓRIO DE BANCO DE DADOS", "ESTRUTURAS DE DADOS", "ENGENHARIA DE SOFTWARE III", "PROGRAMAÇÃO ORIENTADA A OBJETOS"]
+main = print $ map capitalizeString ["ALGORÍTIMOS E LÓGICA DE PROGRAMAÇÃO", "LINGUAGEM DE PROGRAMAÇÃO", "LINGUAGEM DE PROGRAMAÇÃO IV", "LABORATÓRIO DE BANCO DE DADOS", "ESTRUTURAS DE DADOS", "ENGENHARIA DE SOFTWARE III", "PROGRAMAÇÃO ORIENTADA A OBJETOS"]
