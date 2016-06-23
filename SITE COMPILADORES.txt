@@ -1,5 +1,6 @@
 https://tryhaskell.org/
 http://www.tutorialspoint.com/compile_haskell_online.php
+http://rextester.com/l/haskell_online_compiler
 
 import System.Environment
 
