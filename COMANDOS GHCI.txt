@@ -1,0 +1,7 @@
+:set prompt "ghci> "
+
+:l C:\Users\Leandro\Desktop\f.hs
+
+:r
+
+:! cls
