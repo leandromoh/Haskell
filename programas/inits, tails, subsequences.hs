@@ -1,3 +1,10 @@
+inits' [] = []
+inits' xs = bla xs 0 xs
+
+bla xs n [] = [xs]
+bla xs n (y:ys) = (take n xs) : (bla xs (n+1) ys)
+---------------------------------
+
 inits [] = [[]]
 inits (x:xs) = [] : map (x:) (inits xs)
 
