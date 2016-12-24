@@ -1,17 +1,7 @@
-map' f [] = []
-map' f (x:xs) = f x : map' f xs
+map' f = foldr (\x acc -> f x : acc) []
 
-filter' f [] = []
-filter' f (x:xs)
-  | f x = x : ls
-  | otherwise = ls
-  where 
-    ls = filter' f xs
-    
--- foldr (+) 0 [1,2,3]) = + 1 (+ 2 (+ 3 0))
-foldr' f init [] = init
-foldr' f init (x:xs) = f x (foldr' f init xs)
+filter' p =  foldr (\x acc -> if p x then x : acc else acc) []
 
--- foldl (^) 2 [3,4] = (^ (^ 2 3) 4)
-foldl' f init [] = init                  
-foldl' f init (x:xs) = foldl' f (f init x) xs
+foldl' f a bs = foldr (\b g x -> g (f x b)) id bs a
+
+main = print $ foldl' (+) 0 [1..3]
