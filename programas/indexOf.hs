@@ -1,19 +1,11 @@
-indexOf str sub startPosition
-  | startPosition >= len1 = -1
-  | len1 < len2 = -1
-  | otherwise = goThroughList str sub startPosition (len1 - len2)
-  where
-    len1 = length str
-    len2 = length sub
-    
-goThroughList [] _ _ _ = -1
-goThroughList (x:xs) sub pos maxInd
-  | pos > maxInd = -1
-  | tryMatch (x:xs) sub = pos
-  | otherwise = goThroughList xs sub (pos+1) maxInd
+import Data.List
 
-tryMatch _ [] = True
-tryMatch [] (y:ys) = False
-tryMatch (x:xs) (y:ys)
- | x /= y = False
- | otherwise = tryMatch xs ys
+indexOf str sub startPosition = let index = anyIndex (isPrefixOf sub) (tails $ drop startPosition str)
+                                in if index < 0 then index else index + startPosition
+                                
+anyIndex p xs = aux p xs 0
+ where 
+  aux _ [] _ = -1
+  aux p (x:xs) n = if p x then n else aux p xs (n+1)
+
+main = print $ indexOf "hello world" "llo" 0
