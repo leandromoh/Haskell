@@ -1,8 +1,5 @@
 dropLast :: Int -> [a] -> [a]
-dropLast n xs = aux xs $ drop n xs 
- where
-  aux _ [] = []
-  aux (x:xs) (_:ys) = x : aux xs ys
+dropLast n xs = zipWith (\a _ -> a) xs $ drop n xs
 
 
 takeLast :: Int -> [a] -> [a]
