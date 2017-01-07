@@ -10,4 +10,4 @@ instance Applicative Bla where
   Bla _ f <*> x = f <$> x
 
 
-main = print $ (++) <$> pure "hello" <*> Bla 5 "_world"
+main = print $ (\a b c -> a ++ b ++ c) <$>  Bla 1 "hello" <*> Bla 2 " funcking "  <*> Bla 3 "world"
