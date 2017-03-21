@@ -1,7 +1,7 @@
 import Data.Char
 import Data.List
 
-isRoman = all (flip elem ['I','V','X','L','C','D','M'])
+isRoman = all (`elem` ['I','V','X','L','C','D','M'])
 
 capitalizeWord str@(x:xs)
   | isRoman str = map toUpper str
